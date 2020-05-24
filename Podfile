@@ -6,8 +6,7 @@ target 'OptusWeatherDemoApp' do
   use_frameworks!
 
   # Pods for OptusWeatherDemoApp
-    pod 'ReachabilitySwift'
-    pod "RSLoadingView"
+
     pod 'RealmSwift'
 
   target 'OptusWeatherDemoAppTests' do

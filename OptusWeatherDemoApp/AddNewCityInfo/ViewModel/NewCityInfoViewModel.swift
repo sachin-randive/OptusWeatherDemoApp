@@ -18,11 +18,14 @@ class NewCityInfoViewModel: NSObject {
     var filteredCityList: [NewCity]  = []
     
     //MARK:- Filter Logic on searchbar
-    func filterSelectedEmployee(for searchText: String, completionHandler: @escaping ()-> Void) {
-        filteredCityList = newCityList.filter { filteredList in
-            return (filteredList.name.lowercased() as AnyObject).contains(searchText.lowercased())
+    func searchEmployee(with searchText: String, completion: @escaping () -> Void) {
+        if !searchText.isEmpty {
+            filteredCityList = self.newCityList
+            self.filteredCityList = filteredCityList.filter({ $0.name.lowercased().contains(searchText.lowercased())})
+        } else {
+            self.filteredCityList = self.newCityList
         }
-        completionHandler()
+        completion()
     }
     
     //MARK: - getCityList Methods
@@ -33,6 +36,8 @@ class NewCityInfoViewModel: NSObject {
                 let decoder = JSONDecoder()
                 let jsonData = try decoder.decode([NewCity].self, from: data)
                 newCityList = jsonData
+                self.filteredCityList = jsonData
+                self.delegate?.didUpdateCityInfo()
             } catch {
                 print("error:\(error)")
             }

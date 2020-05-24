@@ -11,6 +11,8 @@
 		03086CD92479339E00F55C62 /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03086CD82479339E00F55C62 /* ServiceManager.swift */; };
 		03086CE1247A349B00F55C62 /* NewCityInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03086CE0247A349B00F55C62 /* NewCityInfoModel.swift */; };
 		03086CE4247A96D600F55C62 /* AddNewCityTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03086CE3247A96D600F55C62 /* AddNewCityTableCell.swift */; };
+		03086CE7247AE16500F55C62 /* DetailWeatherInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03086CE6247AE16500F55C62 /* DetailWeatherInfoViewController.swift */; };
+		03086CE9247AEFFC00F55C62 /* OWToastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03086CE8247AEFFC00F55C62 /* OWToastMessage.swift */; };
 		03418DCD2478285F0086A8FB /* WeatherInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03418DCC2478285F0086A8FB /* WeatherInfoViewModel.swift */; };
 		0357898E247A34E900040E31 /* AddNewCityInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0357898D247A34E900040E31 /* AddNewCityInfoViewController.swift */; };
 		03578990247A371800040E31 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0357898F247A371800040E31 /* DatabaseManager.swift */; };
@@ -54,6 +56,8 @@
 		03086CD82479339E00F55C62 /* ServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
 		03086CE0247A349B00F55C62 /* NewCityInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCityInfoModel.swift; sourceTree = "<group>"; };
 		03086CE3247A96D600F55C62 /* AddNewCityTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewCityTableCell.swift; sourceTree = "<group>"; };
+		03086CE6247AE16500F55C62 /* DetailWeatherInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWeatherInfoViewController.swift; sourceTree = "<group>"; };
+		03086CE8247AEFFC00F55C62 /* OWToastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OWToastMessage.swift; sourceTree = "<group>"; };
 		03418DCC2478285F0086A8FB /* WeatherInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherInfoViewModel.swift; sourceTree = "<group>"; };
 		0357898D247A34E900040E31 /* AddNewCityInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewCityInfoViewController.swift; sourceTree = "<group>"; };
 		0357898F247A371800040E31 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
@@ -132,6 +136,7 @@
 		03086CDB2479545500F55C62 /* DetailWeatherInfo */ = {
 			isa = PBXGroup;
 			children = (
+				03086CE6247AE16500F55C62 /* DetailWeatherInfoViewController.swift */,
 			);
 			path = DetailWeatherInfo;
 			sourceTree = "<group>";
@@ -286,6 +291,7 @@
 			children = (
 				03C271D82477E7FF003034F2 /* OWAppConfig.swift */,
 				03C271DA2477E8C4003034F2 /* OWConstants.swift */,
+				03086CE8247AEFFC00F55C62 /* OWToastMessage.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -555,12 +561,14 @@
 			files = (
 				0357898E247A34E900040E31 /* AddNewCityInfoViewController.swift in Sources */,
 				03578990247A371800040E31 /* DatabaseManager.swift in Sources */,
+				03086CE9247AEFFC00F55C62 /* OWToastMessage.swift in Sources */,
 				03C271A62477E5C3003034F2 /* AppDelegate.swift in Sources */,
 				03418DCD2478285F0086A8FB /* WeatherInfoViewModel.swift in Sources */,
 				03086CD72479228700F55C62 /* WeatherInfoTableCell.swift in Sources */,
 				03086CD92479339E00F55C62 /* ServiceManager.swift in Sources */,
 				03C271DF2477FE12003034F2 /* WeatherInfoListViewController.swift in Sources */,
 				03086CE1247A349B00F55C62 /* NewCityInfoModel.swift in Sources */,
+				03086CE7247AE16500F55C62 /* DetailWeatherInfoViewController.swift in Sources */,
 				03086CE4247A96D600F55C62 /* AddNewCityTableCell.swift in Sources */,
 				03C271DB2477E8C4003034F2 /* OWConstants.swift in Sources */,
 				03C271DD2477F7DD003034F2 /* WeatherInfoModel.swift in Sources */,

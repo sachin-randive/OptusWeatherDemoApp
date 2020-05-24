@@ -7,45 +7,34 @@
 //
 
 import UIKit
-import RSLoadingView
-import Reachability
 
 class WeatherInfoListViewController: UIViewController {
     //MARK: - Outlets
     @IBOutlet weak var cityWeatherTableView: UITableView!
     // Declare WeatherInfoViewModel
     fileprivate var weatherInfoViewModel = WeatherInfoViewModel()
-    //declare Loading View
-    let loadingView = RSLoadingView(effectType: RSLoadingView.Effect.twins)
-    //declare this property where it won't go out of scope relative to your listener
-    let reachability = try! Reachability()
-    
+    var activityView: UIActivityIndicatorView?
     override func viewDidLoad() {
         super.viewDidLoad()
         weatherInfoViewModel.delegate = self
-        checkNetworkConnectivity()
+        getCityInfoList()
     }
-    //MARK:- Check Network Connectivity
-    func checkNetworkConnectivity() {
-        reachability.whenReachable = { reachability in
-            if reachability.connection == .wifi ||  reachability.connection == .cellular {
-                self.loadingView.show(on: self.view)
-                self.weatherInfoViewModel.getWeatherInfoList()
-            }
-        }
-        reachability.whenUnreachable = { _ in
-            print("Not reachable")
-        }
-        
-        do {
-            try reachability.startNotifier()
-        } catch {
-            print("Unable to start notifier")
-        }
+    func getCityInfoList() {
+        addActivityIndicator()
+        activityView?.startAnimating()
+        self.weatherInfoViewModel.getWeatherInfoList()
+    }
+    // This method is to setup Activity indicator
+    func addActivityIndicator() {
+        activityView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.white)
+        activityView?.center =  CGPoint(x: self.view.bounds.midX, y: self.view.bounds.midY)
+        activityView?.hidesWhenStopped = true
+        cityWeatherTableView.addSubview(activityView!)
     }
     @IBAction func AddNewCityAction(_ sender: Any) {
-        let nav = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddNewCityInfoViewController") as! AddNewCityInfoViewController
-        self.navigationController?.pushViewController(nav, animated: true)
+        let navToAddNewCityInfoViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddNewCityInfoViewController") as! AddNewCityInfoViewController
+        navToAddNewCityInfoViewController.addCityDelegate = self
+        self.navigationController?.pushViewController(navToAddNewCityInfoViewController, animated: true)
     }
 }
 // MARK: - Delegate and DataSource Methods
@@ -72,11 +61,16 @@ extension WeatherInfoListViewController: UITableViewDataSource, UITableViewDeleg
 // MARK: - Delegate Methods of WeatherInfoViewModelProtocal
 extension WeatherInfoListViewController: WeatherInfoViewModelProtocal {
     func didUpdateWeatherInfo() {
-        RSLoadingView.hide(from: view)
+        activityView?.stopAnimating()
         cityWeatherTableView.reloadData()
     }
     
     func didErrorDisplay() {
-        RSLoadingView.hide(from: view)
+    }
+}
+// MARK: - AddNewEmployeeViewControllerProtocal Delegate - refresh after new employee record added
+extension WeatherInfoListViewController: AddNewCityInfoViewControllerProtocal {
+    func didGoBackAndReloadTableData() {
+        self.weatherInfoViewModel.getWeatherInfoList()
     }
 }

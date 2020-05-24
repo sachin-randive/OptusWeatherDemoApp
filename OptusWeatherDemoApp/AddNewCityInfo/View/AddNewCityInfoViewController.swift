@@ -7,31 +7,43 @@
 //
 
 import UIKit
+import RealmSwift
 
+protocol AddNewCityInfoViewControllerProtocal {
+    func didGoBackAndReloadTableData()
+}
 class AddNewCityInfoViewController: UIViewController {
     ////MARK: - Outlets
     @IBOutlet weak var cityListTableView: UITableView!
     
     // Declare WeatherInfoViewModel
     fileprivate var newCityInfoViewModel = NewCityInfoViewModel()
-    var resultSearchController = UISearchController()
+    var addCityDelegate: AddNewCityInfoViewControllerProtocal?
+    var activityView: UIActivityIndicatorView?
+    @IBOutlet weak var searchBar: UISearchBar!
     override func viewDidLoad() {
         super.viewDidLoad()
         newCityInfoViewModel.delegate = self
-        newCityInfoViewModel.getCityList()
-        initialiseSearchController()
+        addActivityIndicator()
+        activityView?.startAnimating()
     }
-    func initialiseSearchController() {
-        resultSearchController = ({
-            let controller = UISearchController(searchResultsController: nil)
-            controller.searchResultsUpdater = self
-            controller.obscuresBackgroundDuringPresentation = false
-            controller.searchBar.sizeToFit()
-            cityListTableView.tableHeaderView = controller.searchBar
-            return controller
-        })()
-        // Reload the table
-        cityListTableView.reloadData()
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        searchBar.text = ""
+        dismissKeyboard()
+        newCityInfoViewModel.getCityList()
+    }
+    func dismissKeyboard() {
+        DispatchQueue.main.async {
+            self.searchBar.resignFirstResponder()
+        }
+    }
+    // This method is to setup Activity indicator
+    func addActivityIndicator() {
+        activityView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.gray)
+        activityView?.center =  CGPoint(x: self.view.bounds.midX, y: self.view.bounds.midY)
+        activityView?.hidesWhenStopped = true
+        cityListTableView.addSubview(activityView!)
     }
 }
 // MARK: - Delegate and DataSource Methods
@@ -41,25 +53,31 @@ extension AddNewCityInfoViewController: UITableViewDataSource, UITableViewDelega
         cell.accessibilityIdentifier = "cityCell_\(indexPath.row)"
         //let citiesName = newCityInfoViewModel.filteredCityList[indexPath.row]
         let citiesName: NewCity
-        if resultSearchController.isActive && resultSearchController.searchBar.text != "" {
-            citiesName = newCityInfoViewModel.filteredCityList[indexPath.row]
-        } else {
-            citiesName = newCityInfoViewModel.newCityList[indexPath.row]
-        }
+        activityView?.stopAnimating()
+         citiesName = newCityInfoViewModel.filteredCityList[indexPath.row]
         cell.lblCityName?.text = citiesName.name
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if  (resultSearchController.isActive) {
-            return newCityInfoViewModel.filteredCityList.count
-        } else {
-            return newCityInfoViewModel.newCityList.count
-        }
+        return newCityInfoViewModel.filteredCityList.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 40
+        return 80
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let citiesName: NewCity
+        citiesName = newCityInfoViewModel.filteredCityList[indexPath.row]
+        let firstCityInfoModel = NewCityInfoModel()
+        firstCityInfoModel.id = "\(citiesName.id)"
+        firstCityInfoModel.name = citiesName.name
+        DatabaseManager.sharedInstance.addCityInfoData(object: firstCityInfoModel)
+        self.popupAlert(title: OWConstants.success, message:OWConstants.sucessMessage, actionTitles: ["OK"], actions:[{action1 in
+            DispatchQueue.main.async {
+                self.addCityDelegate?.didGoBackAndReloadTableData()
+                self.navigationController?.popViewController(animated: true)
+            } }, nil])
     }
 }
 
@@ -70,12 +88,23 @@ extension AddNewCityInfoViewController: NewCityInfoViewModelProtocal {
     }
 }
 
-// MARK: - UISearchResultsUpdating Delegate
-extension AddNewCityInfoViewController: UISearchResultsUpdating {
-    func updateSearchResults(for searchController: UISearchController) {
-        newCityInfoViewModel.filterSelectedEmployee(for: searchController.searchBar.text ?? "", completionHandler: {
+//MARK: - UISearchBar Delegate
+extension AddNewCityInfoViewController: UISearchBarDelegate {
+    func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
+        return true
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        dismissKeyboard()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        newCityInfoViewModel.searchEmployee(with: searchText) {
             self.cityListTableView.reloadData()
-        })
+            if searchText.isEmpty {
+                self.dismissKeyboard()
+            }
+        }
     }
 }
 

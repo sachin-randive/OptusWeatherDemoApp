@@ -1,5 +1,3 @@
 ${PODS_ROOT}/Target Support Files/Pods-OptusWeatherDemoApp-OptusWeatherDemoAppUITests/Pods-OptusWeatherDemoApp-OptusWeatherDemoAppUITests-frameworks.sh
-${BUILT_PRODUCTS_DIR}/RSLoadingView/RSLoadingView.framework
-${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework
 ${BUILT_PRODUCTS_DIR}/Realm/Realm.framework
 ${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework

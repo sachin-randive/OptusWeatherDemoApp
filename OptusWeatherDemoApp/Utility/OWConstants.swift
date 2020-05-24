@@ -21,6 +21,8 @@ struct OWConstants {
     static let Sydney = "Sydney"
     static let BrisbaneID = "2174003"
     static let Brisbane = "Brisbane"
+    static let sucessMessage = "City Added Successfully!!!"
+    static let success = "Success"
 }
 
 
