@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aSo-Wu-sij">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Weather Info List View Controller-->
+        <!--Weather Report-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="WeatherInfoListViewController" customModule="OptusWeatherDemoApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -16,16 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Faa-0K-sH7">
-                                <rect key="frame" x="0.0" y="44" width="375" height="44"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <items>
-                                    <navigationItem title="Weather Report" id="2ZZ-CD-fOt">
-                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="D35-1S-h1O"/>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lZY-xv-eyI">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lZY-xv-eyI">
                                 <rect key="frame" x="0.0" y="88" width="375" height="690"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -53,12 +44,25 @@
                                                         </label>
                                                     </subviews>
                                                 </stackView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fl2-Ap-gpS">
+                                                    <rect key="frame" x="0.0" y="121" width="375" height="1"/>
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="gDE-wM-w1g"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
+                                                <constraint firstItem="fl2-Ap-gpS" firstAttribute="leading" secondItem="KFh-Hw-yWh" secondAttribute="leading" id="S9V-tk-aOT"/>
                                                 <constraint firstItem="NGY-Xl-LpY" firstAttribute="leading" secondItem="KFh-Hw-yWh" secondAttribute="leadingMargin" constant="10" id="Sl3-7U-tpd"/>
+                                                <constraint firstAttribute="bottom" secondItem="fl2-Ap-gpS" secondAttribute="bottom" id="iP4-cB-5Gm"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="NGY-Xl-LpY" secondAttribute="trailing" constant="10" id="jOz-Tr-EOx"/>
                                                 <constraint firstItem="NGY-Xl-LpY" firstAttribute="centerY" secondItem="KFh-Hw-yWh" secondAttribute="centerY" id="lnT-GR-Gur"/>
+                                                <constraint firstAttribute="trailing" secondItem="fl2-Ap-gpS" secondAttribute="trailing" id="mbp-K2-Df5"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -76,24 +80,110 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="0.30747003420000002" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="lZY-xv-eyI" firstAttribute="top" secondItem="Faa-0K-sH7" secondAttribute="bottom" id="DFZ-4i-A4j"/>
-                            <constraint firstItem="Faa-0K-sH7" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Es5-01-m73"/>
+                            <constraint firstItem="lZY-xv-eyI" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="5jQ-br-N8r"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="lZY-xv-eyI" secondAttribute="bottom" id="Jkc-JP-Azt"/>
-                            <constraint firstItem="Faa-0K-sH7" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="PTx-ml-3Ne"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="lZY-xv-eyI" secondAttribute="trailing" id="Rlu-YN-9fc"/>
-                            <constraint firstItem="Faa-0K-sH7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Uvt-Hp-S3z"/>
                             <constraint firstItem="lZY-xv-eyI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="f5t-Qx-6wN"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Weather Report" id="jhO-st-MFR">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="D35-1S-h1O">
+                            <connections>
+                                <action selector="AddNewCityAction:" destination="BYZ-38-t0r" id="ZPw-lH-zay"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <outlet property="addButton" destination="D35-1S-h1O" id="NXh-b5-IIS"/>
                         <outlet property="cityWeatherTableView" destination="lZY-xv-eyI" id="ZDX-pD-BuC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-84" y="136"/>
+            <point key="canvasLocation" x="716" y="72"/>
+        </scene>
+        <!--Add New City-->
+        <scene sceneID="wS4-5G-bWV">
+            <objects>
+                <viewController storyboardIdentifier="AddNewCityInfoViewController" id="7I1-Rq-jII" customClass="AddNewCityInfoViewController" customModule="OptusWeatherDemoApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JP9-Lu-Csx">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Bze-sQ-7eV">
+                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cityListTableCell" rowHeight="55" id="iYQ-4B-hsu" customClass="AddNewCityTableCell" customModule="OptusWeatherDemoApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="55"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iYQ-4B-hsu" id="eIE-qU-SY2" customClass="AddNewCityTableCell" customModule="OptusWeatherDemoApp" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="55"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QNJ-rH-cXk">
+                                                    <rect key="frame" x="25" y="15" width="325" height="25"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="25" id="eix-3J-ges"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="QNJ-rH-cXk" secondAttribute="trailing" constant="10" id="SsG-N6-seu"/>
+                                                <constraint firstItem="QNJ-rH-cXk" firstAttribute="centerY" secondItem="eIE-qU-SY2" secondAttribute="centerY" id="Z2f-cr-ibK"/>
+                                                <constraint firstItem="QNJ-rH-cXk" firstAttribute="leading" secondItem="eIE-qU-SY2" secondAttribute="leadingMargin" constant="10" id="zKM-kb-I7C"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="lblCityName" destination="QNJ-rH-cXk" id="3m5-De-YHT"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="7I1-Rq-jII" id="cRF-ce-ixN"/>
+                                    <outlet property="delegate" destination="7I1-Rq-jII" id="MuF-Y4-Drh"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="0.30747003420000002" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="QV0-tA-6wp" firstAttribute="trailing" secondItem="Bze-sQ-7eV" secondAttribute="trailing" id="8j5-Z8-nSE"/>
+                            <constraint firstItem="Bze-sQ-7eV" firstAttribute="top" secondItem="QV0-tA-6wp" secondAttribute="top" id="TJl-O4-dvu"/>
+                            <constraint firstItem="QV0-tA-6wp" firstAttribute="bottom" secondItem="Bze-sQ-7eV" secondAttribute="bottom" id="gRz-Lb-APr"/>
+                            <constraint firstItem="Bze-sQ-7eV" firstAttribute="leading" secondItem="QV0-tA-6wp" secondAttribute="leading" id="m23-0v-gc6"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="QV0-tA-6wp"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add New City" id="NlR-zG-qQJ"/>
+                    <connections>
+                        <outlet property="cityListTableView" destination="Bze-sQ-7eV" id="kJT-0g-7QH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LxR-7d-oCp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1660" y="71.674876847290648"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="m9P-aY-BMt">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aSo-Wu-sij" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="DoC-VM-znb">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="0ND-WB-NWO"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HkO-Gz-T6d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-84" y="135.96059113300493"/>
         </scene>
     </scenes>
 </document>

@@ -9,7 +9,13 @@
 /* Begin PBXBuildFile section */
 		03086CD72479228700F55C62 /* WeatherInfoTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03086CD62479228700F55C62 /* WeatherInfoTableCell.swift */; };
 		03086CD92479339E00F55C62 /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03086CD82479339E00F55C62 /* ServiceManager.swift */; };
+		03086CE1247A349B00F55C62 /* NewCityInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03086CE0247A349B00F55C62 /* NewCityInfoModel.swift */; };
+		03086CE4247A96D600F55C62 /* AddNewCityTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03086CE3247A96D600F55C62 /* AddNewCityTableCell.swift */; };
 		03418DCD2478285F0086A8FB /* WeatherInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03418DCC2478285F0086A8FB /* WeatherInfoViewModel.swift */; };
+		0357898E247A34E900040E31 /* AddNewCityInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0357898D247A34E900040E31 /* AddNewCityInfoViewController.swift */; };
+		03578990247A371800040E31 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0357898F247A371800040E31 /* DatabaseManager.swift */; };
+		03578992247AA0AF00040E31 /* citylist.json in Resources */ = {isa = PBXBuildFile; fileRef = 03578991247AA0AF00040E31 /* citylist.json */; };
+		035D4980247AB38F00931F0C /* NewCityInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035D497F247AB38F00931F0C /* NewCityInfoViewModel.swift */; };
 		03C271A62477E5C3003034F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C271A52477E5C3003034F2 /* AppDelegate.swift */; };
 		03C271AB2477E5C3003034F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03C271A92477E5C3003034F2 /* Main.storyboard */; };
 		03C271AD2477E5C4003034F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03C271AC2477E5C4003034F2 /* Assets.xcassets */; };
@@ -46,7 +52,13 @@
 		02F60678E8BC1757FC792538 /* Pods-OptusWeatherDemoApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OptusWeatherDemoApp.release.xcconfig"; path = "Target Support Files/Pods-OptusWeatherDemoApp/Pods-OptusWeatherDemoApp.release.xcconfig"; sourceTree = "<group>"; };
 		03086CD62479228700F55C62 /* WeatherInfoTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherInfoTableCell.swift; sourceTree = "<group>"; };
 		03086CD82479339E00F55C62 /* ServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
+		03086CE0247A349B00F55C62 /* NewCityInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCityInfoModel.swift; sourceTree = "<group>"; };
+		03086CE3247A96D600F55C62 /* AddNewCityTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewCityTableCell.swift; sourceTree = "<group>"; };
 		03418DCC2478285F0086A8FB /* WeatherInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherInfoViewModel.swift; sourceTree = "<group>"; };
+		0357898D247A34E900040E31 /* AddNewCityInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewCityInfoViewController.swift; sourceTree = "<group>"; };
+		0357898F247A371800040E31 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		03578991247AA0AF00040E31 /* citylist.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = citylist.json; sourceTree = "<group>"; };
+		035D497F247AB38F00931F0C /* NewCityInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCityInfoViewModel.swift; sourceTree = "<group>"; };
 		03C271A22477E5C3003034F2 /* OptusWeatherDemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OptusWeatherDemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03C271A52477E5C3003034F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		03C271AA2477E5C3003034F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -117,6 +129,65 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		03086CDB2479545500F55C62 /* DetailWeatherInfo */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DetailWeatherInfo;
+			sourceTree = "<group>";
+		};
+		03086CDC2479546D00F55C62 /* AddNewCityInfo */ = {
+			isa = PBXGroup;
+			children = (
+				03086CDF2479559D00F55C62 /* Model */,
+				03086CDE2479559500F55C62 /* View */,
+				03086CDD2479558600F55C62 /* ViewModel */,
+			);
+			path = AddNewCityInfo;
+			sourceTree = "<group>";
+		};
+		03086CDD2479558600F55C62 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				035D497F247AB38F00931F0C /* NewCityInfoViewModel.swift */,
+				0357898F247A371800040E31 /* DatabaseManager.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		03086CDE2479559500F55C62 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0357898D247A34E900040E31 /* AddNewCityInfoViewController.swift */,
+				03086CE2247A965600F55C62 /* AddNewCityCell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		03086CDF2479559D00F55C62 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				03086CE0247A349B00F55C62 /* NewCityInfoModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		03086CE2247A965600F55C62 /* AddNewCityCell */ = {
+			isa = PBXGroup;
+			children = (
+				03086CE3247A96D600F55C62 /* AddNewCityTableCell.swift */,
+			);
+			path = AddNewCityCell;
+			sourceTree = "<group>";
+		};
+		03086CE5247A9A2500F55C62 /* LocalJson */ = {
+			isa = PBXGroup;
+			children = (
+				03578991247AA0AF00040E31 /* citylist.json */,
+			);
+			path = LocalJson;
+			sourceTree = "<group>";
+		};
 		03C271992477E5C3003034F2 = {
 			isa = PBXGroup;
 			children = (
@@ -144,8 +215,11 @@
 			children = (
 				03C271A52477E5C3003034F2 /* AppDelegate.swift */,
 				03C271D62477E7B7003034F2 /* WeatherInfo */,
+				03086CDB2479545500F55C62 /* DetailWeatherInfo */,
+				03086CDC2479546D00F55C62 /* AddNewCityInfo */,
 				03086CDA247933A700F55C62 /* Services */,
 				03C271D72477E7D1003034F2 /* Utility */,
+				03086CE5247A9A2500F55C62 /* LocalJson */,
 				03C271A92477E5C3003034F2 /* Main.storyboard */,
 				03C271AC2477E5C4003034F2 /* Assets.xcassets */,
 				03C271AE2477E5C4003034F2 /* LaunchScreen.storyboard */,
@@ -350,6 +424,7 @@
 			files = (
 				03C271B02477E5C4003034F2 /* LaunchScreen.storyboard in Resources */,
 				03C271AD2477E5C4003034F2 /* Assets.xcassets in Resources */,
+				03578992247AA0AF00040E31 /* citylist.json in Resources */,
 				03C271AB2477E5C3003034F2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -478,13 +553,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0357898E247A34E900040E31 /* AddNewCityInfoViewController.swift in Sources */,
+				03578990247A371800040E31 /* DatabaseManager.swift in Sources */,
 				03C271A62477E5C3003034F2 /* AppDelegate.swift in Sources */,
 				03418DCD2478285F0086A8FB /* WeatherInfoViewModel.swift in Sources */,
 				03086CD72479228700F55C62 /* WeatherInfoTableCell.swift in Sources */,
 				03086CD92479339E00F55C62 /* ServiceManager.swift in Sources */,
 				03C271DF2477FE12003034F2 /* WeatherInfoListViewController.swift in Sources */,
+				03086CE1247A349B00F55C62 /* NewCityInfoModel.swift in Sources */,
+				03086CE4247A96D600F55C62 /* AddNewCityTableCell.swift in Sources */,
 				03C271DB2477E8C4003034F2 /* OWConstants.swift in Sources */,
 				03C271DD2477F7DD003034F2 /* WeatherInfoModel.swift in Sources */,
+				035D4980247AB38F00931F0C /* NewCityInfoViewModel.swift in Sources */,
 				03C271D92477E7FF003034F2 /* OWAppConfig.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

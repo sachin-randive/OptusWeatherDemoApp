@@ -13,9 +13,8 @@ import Reachability
 class WeatherInfoListViewController: UIViewController {
     //MARK: - Outlets
     @IBOutlet weak var cityWeatherTableView: UITableView!
-    @IBOutlet weak var addButton: UIBarButtonItem!
     // Declare WeatherInfoViewModel
-    fileprivate let weatherInfoViewModel = WeatherInfoViewModel()
+    fileprivate var weatherInfoViewModel = WeatherInfoViewModel()
     //declare Loading View
     let loadingView = RSLoadingView(effectType: RSLoadingView.Effect.twins)
     //declare this property where it won't go out of scope relative to your listener
@@ -44,6 +43,10 @@ class WeatherInfoListViewController: UIViewController {
             print("Unable to start notifier")
         }
     }
+    @IBAction func AddNewCityAction(_ sender: Any) {
+        let nav = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddNewCityInfoViewController") as! AddNewCityInfoViewController
+        self.navigationController?.pushViewController(nav, animated: true)
+    }
 }
 // MARK: - Delegate and DataSource Methods
 extension WeatherInfoListViewController: UITableViewDataSource, UITableViewDelegate {
@@ -52,7 +55,7 @@ extension WeatherInfoListViewController: UITableViewDataSource, UITableViewDeleg
         cell.accessibilityIdentifier = "myCell_\(indexPath.row)"
         let WeatherInfo = weatherInfoViewModel.weatherInfoList[indexPath.row]
         cell.cityNameLabel?.text = WeatherInfo.name
-        cell.cityTemperatureLabel?.text = "\(WeatherInfo.main.temp) °C"
+        cell.cityTemperatureLabel?.text = "\(String(describing: WeatherInfo.main.temp)) °C"
         cell.accessoryType = .disclosureIndicator
         return cell
     }
@@ -74,6 +77,6 @@ extension WeatherInfoListViewController: WeatherInfoViewModelProtocal {
     }
     
     func didErrorDisplay() {
-        
+        RSLoadingView.hide(from: view)
     }
 }
