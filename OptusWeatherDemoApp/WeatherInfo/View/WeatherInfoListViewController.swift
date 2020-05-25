@@ -15,12 +15,14 @@ class WeatherInfoListViewController: UIViewController {
     // Declare WeatherInfoViewModel
     fileprivate var weatherInfoViewModel = WeatherInfoViewModel()
     var activityView: UIActivityIndicatorView?
+    var apiCallTimer: Timer?
     override func viewDidLoad() {
         super.viewDidLoad()
         weatherInfoViewModel.delegate = self
         getCityInfoList()
+        apiCallTimer = Timer.scheduledTimer(timeInterval: 300, target: self, selector: #selector(getCityInfoList), userInfo: nil, repeats: true)
     }
-    func getCityInfoList() {
+   @objc func getCityInfoList() {
         addActivityIndicator()
         activityView?.startAnimating()
         cityWeatherTableView.accessibilityIdentifier = OWConstants.tableCityWeatherTableView
