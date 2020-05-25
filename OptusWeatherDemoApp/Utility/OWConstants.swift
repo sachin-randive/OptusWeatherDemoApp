@@ -12,6 +12,7 @@ import Foundation
 enum CellIdentifiers {
     static let cityWeatherTableViewCell = "cityWeatherTableViewCell"
     static let cityListTableCell = "cityListTableCell"
+    static let DetailWeatherInfoCell = "DetailWeatherInfoCell"
 }
 struct OWConstants {
     static let UNIT = "metric"
@@ -23,6 +24,8 @@ struct OWConstants {
     static let Brisbane = "Brisbane"
     static let sucessMessage = "City Added Successfully!!!"
     static let success = "Success"
+    static let Error = "Error"
+    static let errorMessage = "Fail to load data from server. Please try after sometime."
 }
 
 

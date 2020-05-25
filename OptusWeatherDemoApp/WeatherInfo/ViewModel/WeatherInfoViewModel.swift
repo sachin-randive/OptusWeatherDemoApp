@@ -60,7 +60,7 @@ class WeatherInfoViewModel: NSObject {
                 
             case .failure(let error):
                 print(error.localizedDescription)
-                 self.delegate?.didErrorDisplay()
+                self.delegate?.didErrorDisplay()
             }
         })
     }

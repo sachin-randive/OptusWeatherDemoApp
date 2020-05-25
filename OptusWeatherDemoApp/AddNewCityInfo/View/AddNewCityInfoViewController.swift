@@ -24,14 +24,17 @@ class AddNewCityInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         newCityInfoViewModel.delegate = self
-        addActivityIndicator()
-        activityView?.startAnimating()
+        
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
+        addActivityIndicator()
+        activityView?.startAnimating()
         searchBar.text = ""
         dismissKeyboard()
-        newCityInfoViewModel.getCityList()
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2), execute: {
+            self.newCityInfoViewModel.getCityList()
+        })
     }
     func dismissKeyboard() {
         DispatchQueue.main.async {
@@ -40,7 +43,7 @@ class AddNewCityInfoViewController: UIViewController {
     }
     // This method is to setup Activity indicator
     func addActivityIndicator() {
-        activityView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.gray)
+        activityView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.whiteLarge)
         activityView?.center =  CGPoint(x: self.view.bounds.midX, y: self.view.bounds.midY)
         activityView?.hidesWhenStopped = true
         cityListTableView.addSubview(activityView!)
@@ -54,7 +57,7 @@ extension AddNewCityInfoViewController: UITableViewDataSource, UITableViewDelega
         //let citiesName = newCityInfoViewModel.filteredCityList[indexPath.row]
         let citiesName: NewCity
         activityView?.stopAnimating()
-         citiesName = newCityInfoViewModel.filteredCityList[indexPath.row]
+        citiesName = newCityInfoViewModel.filteredCityList[indexPath.row]
         cell.lblCityName?.text = citiesName.name
         return cell
     }

@@ -18,6 +18,7 @@
 		03578990247A371800040E31 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0357898F247A371800040E31 /* DatabaseManager.swift */; };
 		03578992247AA0AF00040E31 /* citylist.json in Resources */ = {isa = PBXBuildFile; fileRef = 03578991247AA0AF00040E31 /* citylist.json */; };
 		035D4980247AB38F00931F0C /* NewCityInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035D497F247AB38F00931F0C /* NewCityInfoViewModel.swift */; };
+		035D4982247B136200931F0C /* DetailWeatherInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035D4981247B136200931F0C /* DetailWeatherInfoCell.swift */; };
 		03C271A62477E5C3003034F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C271A52477E5C3003034F2 /* AppDelegate.swift */; };
 		03C271AB2477E5C3003034F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03C271A92477E5C3003034F2 /* Main.storyboard */; };
 		03C271AD2477E5C4003034F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03C271AC2477E5C4003034F2 /* Assets.xcassets */; };
@@ -63,6 +64,7 @@
 		0357898F247A371800040E31 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		03578991247AA0AF00040E31 /* citylist.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = citylist.json; sourceTree = "<group>"; };
 		035D497F247AB38F00931F0C /* NewCityInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCityInfoViewModel.swift; sourceTree = "<group>"; };
+		035D4981247B136200931F0C /* DetailWeatherInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWeatherInfoCell.swift; sourceTree = "<group>"; };
 		03C271A22477E5C3003034F2 /* OptusWeatherDemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OptusWeatherDemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03C271A52477E5C3003034F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		03C271AA2477E5C3003034F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				03086CE6247AE16500F55C62 /* DetailWeatherInfoViewController.swift */,
+				035D4983247B136F00931F0C /* DetailsInfoCell */,
 			);
 			path = DetailWeatherInfo;
 			sourceTree = "<group>";
@@ -191,6 +194,14 @@
 				03578991247AA0AF00040E31 /* citylist.json */,
 			);
 			path = LocalJson;
+			sourceTree = "<group>";
+		};
+		035D4983247B136F00931F0C /* DetailsInfoCell */ = {
+			isa = PBXGroup;
+			children = (
+				035D4981247B136200931F0C /* DetailWeatherInfoCell.swift */,
+			);
+			path = DetailsInfoCell;
 			sourceTree = "<group>";
 		};
 		03C271992477E5C3003034F2 = {
@@ -564,6 +575,7 @@
 				03086CE9247AEFFC00F55C62 /* OWToastMessage.swift in Sources */,
 				03C271A62477E5C3003034F2 /* AppDelegate.swift in Sources */,
 				03418DCD2478285F0086A8FB /* WeatherInfoViewModel.swift in Sources */,
+				035D4982247B136200931F0C /* DetailWeatherInfoCell.swift in Sources */,
 				03086CD72479228700F55C62 /* WeatherInfoTableCell.swift in Sources */,
 				03086CD92479339E00F55C62 /* ServiceManager.swift in Sources */,
 				03C271DF2477FE12003034F2 /* WeatherInfoListViewController.swift in Sources */,

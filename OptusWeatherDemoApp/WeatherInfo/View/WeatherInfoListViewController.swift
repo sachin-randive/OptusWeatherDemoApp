@@ -26,17 +26,19 @@ class WeatherInfoListViewController: UIViewController {
     }
     // This method is to setup Activity indicator
     func addActivityIndicator() {
-        activityView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.white)
+        activityView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.whiteLarge)
         activityView?.center =  CGPoint(x: self.view.bounds.midX, y: self.view.bounds.midY)
         activityView?.hidesWhenStopped = true
         cityWeatherTableView.addSubview(activityView!)
     }
+    //MARK:- AddNewCityAction
     @IBAction func AddNewCityAction(_ sender: Any) {
         let navToAddNewCityInfoViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddNewCityInfoViewController") as! AddNewCityInfoViewController
         navToAddNewCityInfoViewController.addCityDelegate = self
-        self.navigationController?.pushViewController(navToAddNewCityInfoViewController, animated: true)
+        self.navigationController?.pushViewController(navToAddNewCityInfoViewController, animated: false)
     }
 }
+
 // MARK: - Delegate and DataSource Methods
 extension WeatherInfoListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -56,6 +58,11 @@ extension WeatherInfoListViewController: UITableViewDataSource, UITableViewDeleg
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let navToDetailWeatherInfoViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailWeatherInfoViewController") as! DetailWeatherInfoViewController
+        navToDetailWeatherInfoViewController.selectedWeatherInfo =  weatherInfoViewModel.weatherInfoList[indexPath.row]
+        self.navigationController?.pushViewController(navToDetailWeatherInfoViewController, animated: false)
+    }
 }
 
 // MARK: - Delegate Methods of WeatherInfoViewModelProtocal
@@ -66,6 +73,10 @@ extension WeatherInfoListViewController: WeatherInfoViewModelProtocal {
     }
     
     func didErrorDisplay() {
+        DispatchQueue.main.async {
+            self.activityView?.stopAnimating()
+            self.alert(message:OWConstants.errorMessage, title: OWConstants.Error)
+        }
     }
 }
 // MARK: - AddNewEmployeeViewControllerProtocal Delegate - refresh after new employee record added
