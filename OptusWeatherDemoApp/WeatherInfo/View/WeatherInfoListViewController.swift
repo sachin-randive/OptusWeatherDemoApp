@@ -11,6 +11,7 @@ import UIKit
 class WeatherInfoListViewController: UIViewController {
     //MARK: - Outlets
     @IBOutlet weak var cityWeatherTableView: UITableView!
+    @IBOutlet weak var addNewCityBtn: UIBarButtonItem!
     // Declare WeatherInfoViewModel
     fileprivate var weatherInfoViewModel = WeatherInfoViewModel()
     var activityView: UIActivityIndicatorView?
@@ -22,6 +23,8 @@ class WeatherInfoListViewController: UIViewController {
     func getCityInfoList() {
         addActivityIndicator()
         activityView?.startAnimating()
+        cityWeatherTableView.accessibilityIdentifier = OWConstants.tableCityWeatherTableView
+        addNewCityBtn.accessibilityIdentifier = OWConstants.addNewCityBtn
         self.weatherInfoViewModel.getWeatherInfoList()
     }
     // This method is to setup Activity indicator

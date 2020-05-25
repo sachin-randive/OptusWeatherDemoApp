@@ -26,6 +26,10 @@ struct OWConstants {
     static let success = "Success"
     static let Error = "Error"
     static let errorMessage = "Fail to load data from server. Please try after sometime."
+    static let tableCityWeatherTableView = "table--cityWeatherTableView"
+    static let addNewCityBtn = "addNewCityBtn"
+    static let AddNewCity_Dashboard = "AddNewCity_Dashboard"
+    static let searchBarIndentifier = "SearchBar"
 }
 
 

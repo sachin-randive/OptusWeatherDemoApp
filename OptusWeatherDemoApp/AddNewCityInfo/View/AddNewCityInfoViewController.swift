@@ -24,7 +24,7 @@ class AddNewCityInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         newCityInfoViewModel.delegate = self
-        
+        view.accessibilityIdentifier = OWConstants.AddNewCity_Dashboard
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
@@ -32,6 +32,7 @@ class AddNewCityInfoViewController: UIViewController {
         activityView?.startAnimating()
         searchBar.text = ""
         dismissKeyboard()
+        searchBar.accessibilityIdentifier = OWConstants.searchBarIndentifier
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2), execute: {
             self.newCityInfoViewModel.getCityList()
         })

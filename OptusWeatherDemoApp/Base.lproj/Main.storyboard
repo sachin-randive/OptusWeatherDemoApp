@@ -65,7 +65,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="fl2-Ap-gpS" secondAttribute="trailing" id="mbp-K2-Df5"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="1" alpha="0.49162564212328769" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="cityNameLabel" destination="eww-5P-PcZ" id="Tcq-Si-Spy"/>
                                             <outlet property="cityTemperatureLabel" destination="l9x-aH-p25" id="7An-fi-KsE"/>
@@ -95,6 +95,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addNewCityBtn" destination="D35-1S-h1O" id="Cm9-3E-eJO"/>
                         <outlet property="cityWeatherTableView" destination="lZY-xv-eyI" id="ZDX-pD-BuC"/>
                     </connections>
                 </viewController>
@@ -148,7 +149,7 @@
                                                 <constraint firstItem="ddV-iO-zCi" firstAttribute="centerY" secondItem="l2w-dJ-y2I" secondAttribute="centerY" id="jPS-uz-ovh"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="1" alpha="0.48804045376712329" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="lblCityName" destination="ddV-iO-zCi" id="aBu-fR-5Og"/>
                                         </connections>
@@ -303,7 +304,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HkO-Gz-T6d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-84" y="135.96059113300493"/>
+            <point key="canvasLocation" x="-351" y="129"/>
         </scene>
     </scenes>
 </document>

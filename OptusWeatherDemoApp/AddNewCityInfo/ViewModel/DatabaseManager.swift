@@ -25,8 +25,7 @@ class DatabaseManager {
     
     func addCityInfoData(object: NewCityInfoModel) {
         try! database.write {
-            database.add(object) 
-            print("Added new object")
+            database.add(object)
         }
     }
 }
