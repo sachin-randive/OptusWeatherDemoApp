@@ -32,4 +32,3 @@ struct OWConstants {
     static let searchBarIndentifier = "SearchBar"
 }
 
-

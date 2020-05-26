@@ -63,9 +63,5 @@ class OptusWeatherDemoAppUITests: XCTestCase {
         XCTAssertTrue(searchTextField.exists)
         searchTextField.tap()
         searchTextField.typeText("keg")
-        searchTextField.buttons["Clear text"].tap()
-        searchTextField.tap()
-        searchTextField.typeText("Re")
-        app.buttons["Search"].tap()
     }
 }

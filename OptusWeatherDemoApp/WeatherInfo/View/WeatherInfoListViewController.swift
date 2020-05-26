@@ -16,13 +16,19 @@ class WeatherInfoListViewController: UIViewController {
     fileprivate var weatherInfoViewModel = WeatherInfoViewModel()
     var activityView: UIActivityIndicatorView?
     var apiCallTimer: Timer?
+    let gradientLayer = CAGradientLayer()
     override func viewDidLoad() {
         super.viewDidLoad()
         weatherInfoViewModel.delegate = self
         getCityInfoList()
         apiCallTimer = Timer.scheduledTimer(timeInterval: 300, target: self, selector: #selector(getCityInfoList), userInfo: nil, repeats: true)
+        self.setGradientBackground(gradientLayer:gradientLayer)
     }
-   @objc func getCityInfoList() {
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        gradientLayer.frame = view.layer.bounds
+    }
+    @objc func getCityInfoList() {
         addActivityIndicator()
         activityView?.startAnimating()
         cityWeatherTableView.accessibilityIdentifier = OWConstants.tableCityWeatherTableView
@@ -34,7 +40,7 @@ class WeatherInfoListViewController: UIViewController {
         activityView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.whiteLarge)
         activityView?.center =  CGPoint(x: self.view.bounds.midX, y: self.view.bounds.midY)
         activityView?.hidesWhenStopped = true
-        cityWeatherTableView.addSubview(activityView!)
+        view.addSubview(activityView!)
     }
     //MARK:- AddNewCityAction
     @IBAction func AddNewCityAction(_ sender: Any) {
@@ -52,7 +58,7 @@ extension WeatherInfoListViewController: UITableViewDataSource, UITableViewDeleg
         let WeatherInfo = weatherInfoViewModel.weatherInfoList[indexPath.row]
         cell.cityNameLabel?.text = WeatherInfo.name
         cell.cityTemperatureLabel?.text = "\(String(describing: WeatherInfo.main.temp)) °C"
-        cell.accessoryType = .disclosureIndicator
+        cell.selectionStyle = .none
         return cell
     }
     
@@ -61,11 +67,11 @@ extension WeatherInfoListViewController: UITableViewDataSource, UITableViewDeleg
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 60
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let navToDetailWeatherInfoViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailWeatherInfoViewController") as! DetailWeatherInfoViewController
-        navToDetailWeatherInfoViewController.selectedWeatherInfo =  weatherInfoViewModel.weatherInfoList[indexPath.row]
+        navToDetailWeatherInfoViewController.selectedWeatherInfoID = weatherInfoViewModel.weatherInfoList[indexPath.row].id
         self.navigationController?.pushViewController(navToDetailWeatherInfoViewController, animated: false)
     }
 }

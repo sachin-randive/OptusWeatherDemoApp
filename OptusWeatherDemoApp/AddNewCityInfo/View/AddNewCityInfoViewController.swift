@@ -15,16 +15,20 @@ protocol AddNewCityInfoViewControllerProtocal {
 class AddNewCityInfoViewController: UIViewController {
     ////MARK: - Outlets
     @IBOutlet weak var cityListTableView: UITableView!
-    
+    @IBOutlet weak var searchBar: UISearchBar!
     // Declare WeatherInfoViewModel
     fileprivate var newCityInfoViewModel = NewCityInfoViewModel()
+    let gradientLayer = CAGradientLayer()
     var addCityDelegate: AddNewCityInfoViewControllerProtocal?
     var activityView: UIActivityIndicatorView?
-    @IBOutlet weak var searchBar: UISearchBar!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         newCityInfoViewModel.delegate = self
         view.accessibilityIdentifier = OWConstants.AddNewCity_Dashboard
+        self.setGradientBackground(gradientLayer: gradientLayer)
+        let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
+        textFieldInsideSearchBar?.backgroundColor = UIColor.black
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
@@ -37,6 +41,11 @@ class AddNewCityInfoViewController: UIViewController {
             self.newCityInfoViewModel.getCityList()
         })
     }
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        gradientLayer.frame = view.layer.bounds
+    }
+    
     func dismissKeyboard() {
         DispatchQueue.main.async {
             self.searchBar.resignFirstResponder()
@@ -47,7 +56,7 @@ class AddNewCityInfoViewController: UIViewController {
         activityView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.whiteLarge)
         activityView?.center =  CGPoint(x: self.view.bounds.midX, y: self.view.bounds.midY)
         activityView?.hidesWhenStopped = true
-        cityListTableView.addSubview(activityView!)
+        view.addSubview(activityView!)
     }
 }
 // MARK: - Delegate and DataSource Methods
@@ -68,7 +77,7 @@ extension AddNewCityInfoViewController: UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return 60
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let citiesName: NewCity

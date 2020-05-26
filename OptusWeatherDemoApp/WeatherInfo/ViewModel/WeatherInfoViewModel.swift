@@ -45,7 +45,7 @@ class WeatherInfoViewModel: NSObject {
         let listOfCityInfo = DatabaseManager.sharedInstance.getCityInfoDataFromDB()
         let groupOfId = (listOfCityInfo.map{$0["id"] as! String}).joined(separator: ",")
         print(groupOfId)
-        let urlString = OWAppConfig.BaseURL + "id=\(groupOfId)&units=\(OWConstants.UNIT)&APPID=\(OWAppConfig.API_KEY)"
+        let urlString = OWAppConfig.BaseURL + OWAppConfig.group + "id=\(groupOfId)&units=\(OWConstants.UNIT)&APPID=\(OWAppConfig.API_KEY)"
         ServiceManager.shared.getWeatherInfo(urlString: urlString, completionHandler: { (result: Result<WeatherInfo?, NetworkError>) in
             switch result {
             case .success(let response):
