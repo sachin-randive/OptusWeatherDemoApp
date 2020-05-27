@@ -51,27 +51,27 @@ class DetailWeatherInfoViewController: UIViewController {
         switch row {
         case 0:
             dataText = "\((detailInfoViewModel.weatherDeatilsInfoList?.main.humidity)!)%" 
-            imageName = "Humidity"
+            imageName = "humidity"
         case 1:
             dataText = "\((detailInfoViewModel.weatherDeatilsInfoList?.main.tempMax)!)°%"
-            imageName = "Temp_max"
+            imageName = "temp_max"
         case 2:
             dataText = "\((detailInfoViewModel.weatherDeatilsInfoList?.main.tempMin)!)°%"
-            imageName = "Temp_min"
+            imageName = "temp_min"
         case 3:
             dataText = "\((detailInfoViewModel.weatherDeatilsInfoList?.wind?.speed)!)m/s"
-            imageName = "Windspeed"
+            imageName = "windspeed"
         case 4:
             let date = NSDate(timeIntervalSince1970: TimeInterval((detailInfoViewModel.weatherDeatilsInfoList?.sys.sunrise)!))
             dataText = getTimeStringFromDate(date: date as Date)
-            imageName = "Sunrise"
+            imageName = "sunrise"
         case 5:
             let date = NSDate(timeIntervalSince1970: TimeInterval((detailInfoViewModel.weatherDeatilsInfoList?.sys.sunset)!))
             dataText = getTimeStringFromDate(date: date as Date)
-            imageName = "Sunset"
+            imageName = "sunset"
         case 6:
             dataText = "\((detailInfoViewModel.weatherDeatilsInfoList?.main.pressure)!) mb"
-            imageName = "Pressure"
+            imageName = "pressure"
         case 7:
             let value =  Double((detailInfoViewModel.weatherDeatilsInfoList?.visibility) ?? 00) / 1000
             if value == 0.0 {
@@ -79,10 +79,10 @@ class DetailWeatherInfoViewController: UIViewController {
             } else {
                 dataText = "\(value) Km"
             }
-            imageName = "Visibility"
+            imageName = "visibility"
         default:
             dataText = "\((detailInfoViewModel.weatherDeatilsInfoList?.main.humidity)!)%"
-            imageName = "Humidity"
+            imageName = "humidity"
         }
         
         return (dataText,imageName)
