@@ -25,7 +25,7 @@ class OptusWeatherDemoAppTests: XCTestCase {
         let listOfCityInfo = DatabaseManager.sharedInstance.getCityInfoDataFromDB()
         let groupOfId = (listOfCityInfo.map{$0["id"] as! String}).joined(separator: ",")
         print(groupOfId)
-        let urlString = OWAppConfig.BaseURL + "id=\(groupOfId)&units=\(OWConstants.UNIT)&APPID=\(OWAppConfig.API_KEY)"
+        let urlString = OWAppConfig.BaseURL + OWAppConfig.group + "id=\(groupOfId)&units=\(OWConstants.UNIT)&APPID=\(OWAppConfig.API_KEY)"
         // given
         let url = URL(string: urlString)
         // 1

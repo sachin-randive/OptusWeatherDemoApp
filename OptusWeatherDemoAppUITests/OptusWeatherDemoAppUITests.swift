@@ -52,16 +52,4 @@ class OptusWeatherDemoAppUITests: XCTestCase {
             XCTAssert(false, "Was not able to find any table cells")
         }
     }
-    //MARK :- add New city  UI testing Start here.
-    func test_AddNewRecordPage_goesDashBoard() {
-        app.launch()
-        app.buttons["addNewCityBtn"].tap()
-        let dashBoardView = app.otherElements["AddNewCity_Dashboard"]
-        let dashBoardShown = dashBoardView.waitForExistence(timeout: 10)
-        XCTAssert(dashBoardShown)
-        let searchTextField = app.searchFields["Enter City Name"]
-        XCTAssertTrue(searchTextField.exists)
-        searchTextField.tap()
-        searchTextField.typeText("keg")
-    }
 }

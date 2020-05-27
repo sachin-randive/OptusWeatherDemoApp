@@ -15,6 +15,7 @@ protocol DetailInfoViewModelProtocal {
 class DetailInfoViewModel: NSObject {
     var detailsDelegate: DetailInfoViewModelProtocal?
     var weatherDeatilsInfoList : DetailInfoModel?
+    
     //MARK: - getEmployeeList Methods
     func getWeatherInfoList(cityID: String) {
         let urlString = OWAppConfig.BaseURL + OWAppConfig.weather +  "id=\(cityID)&units=\(OWConstants.UNIT)&APPID=\(OWAppConfig.API_KEY)"

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03077DF9247E6D9900C13A3A /* CitySerachTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03077DF8247E6D9900C13A3A /* CitySerachTests.swift */; };
 		03086CD72479228700F55C62 /* WeatherInfoTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03086CD62479228700F55C62 /* WeatherInfoTableCell.swift */; };
 		03086CD92479339E00F55C62 /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03086CD82479339E00F55C62 /* ServiceManager.swift */; };
 		03086CE1247A349B00F55C62 /* NewCityInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03086CE0247A349B00F55C62 /* NewCityInfoModel.swift */; };
@@ -56,6 +57,9 @@
 
 /* Begin PBXFileReference section */
 		02F60678E8BC1757FC792538 /* Pods-OptusWeatherDemoApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OptusWeatherDemoApp.release.xcconfig"; path = "Target Support Files/Pods-OptusWeatherDemoApp/Pods-OptusWeatherDemoApp.release.xcconfig"; sourceTree = "<group>"; };
+		03077DF0247E6D5900C13A3A /* CitySerachTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitySerachTests.swift; sourceTree = "<group>"; };
+		03077DF2247E6D5900C13A3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		03077DF8247E6D9900C13A3A /* CitySerachTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitySerachTests.swift; sourceTree = "<group>"; };
 		03086CD62479228700F55C62 /* WeatherInfoTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherInfoTableCell.swift; sourceTree = "<group>"; };
 		03086CD82479339E00F55C62 /* ServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
 		03086CE0247A349B00F55C62 /* NewCityInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCityInfoModel.swift; sourceTree = "<group>"; };
@@ -125,6 +129,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		03077DEF247E6D5900C13A3A /* CitySerachTests */ = {
+			isa = PBXGroup;
+			children = (
+				03077DF0247E6D5900C13A3A /* CitySerachTests.swift */,
+				03077DF2247E6D5900C13A3A /* Info.plist */,
+			);
+			path = CitySerachTests;
+			sourceTree = "<group>";
+		};
 		03086CD52479224E00F55C62 /* WeatherInfoCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -234,6 +247,7 @@
 				03C271A42477E5C3003034F2 /* OptusWeatherDemoApp */,
 				03C271B92477E5C4003034F2 /* OptusWeatherDemoAppTests */,
 				03C271C42477E5C4003034F2 /* OptusWeatherDemoAppUITests */,
+				03077DEF247E6D5900C13A3A /* CitySerachTests */,
 				03C271A32477E5C3003034F2 /* Products */,
 				DDDD70FCA7F9856003C10800 /* Pods */,
 				45EC614C80FC60E8D0D8BA9D /* Frameworks */,
@@ -272,6 +286,7 @@
 			isa = PBXGroup;
 			children = (
 				03C271BA2477E5C4003034F2 /* OptusWeatherDemoAppTests.swift */,
+				03077DF8247E6D9900C13A3A /* CitySerachTests.swift */,
 				03C271BC2477E5C4003034F2 /* Info.plist */,
 			);
 			path = OptusWeatherDemoAppTests;
@@ -629,6 +644,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03077DF9247E6D9900C13A3A /* CitySerachTests.swift in Sources */,
 				03C271BB2477E5C4003034F2 /* OptusWeatherDemoAppTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

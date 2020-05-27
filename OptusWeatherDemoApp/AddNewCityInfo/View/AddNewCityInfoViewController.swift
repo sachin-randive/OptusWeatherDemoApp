@@ -30,6 +30,7 @@ class AddNewCityInfoViewController: UIViewController {
         let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
         textFieldInsideSearchBar?.backgroundColor = UIColor.black
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         addActivityIndicator()
@@ -41,6 +42,7 @@ class AddNewCityInfoViewController: UIViewController {
             self.newCityInfoViewModel.getCityList()
         })
     }
+    
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         gradientLayer.frame = view.layer.bounds
@@ -51,6 +53,7 @@ class AddNewCityInfoViewController: UIViewController {
             self.searchBar.resignFirstResponder()
         }
     }
+    
     // This method is to setup Activity indicator
     func addActivityIndicator() {
         activityView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.whiteLarge)
@@ -61,6 +64,7 @@ class AddNewCityInfoViewController: UIViewController {
 }
 // MARK: - Delegate and DataSource Methods
 extension AddNewCityInfoViewController: UITableViewDataSource, UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell  = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.cityListTableCell) as! AddNewCityTableCell
         cell.accessibilityIdentifier = "cityCell_\(indexPath.row)"
@@ -79,13 +83,14 @@ extension AddNewCityInfoViewController: UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let citiesName: NewCity
         citiesName = newCityInfoViewModel.filteredCityList[indexPath.row]
         let firstCityInfoModel = NewCityInfoModel()
         firstCityInfoModel.id = "\(citiesName.id)"
         firstCityInfoModel.name = citiesName.name
-        if DatabaseManager.sharedInstance.searchNameIfExistInDatabase(name: citiesName.name) == nil {
+        if DatabaseManager.sharedInstance.searchNameIfExistInDatabase(id: "\(citiesName.id)") == nil {
             DatabaseManager.sharedInstance.addCityInfoData(object: firstCityInfoModel)
             self.popupAlert(title: OWConstants.success, message:OWConstants.sucessMessage, actionTitles: ["OK"], actions:[{action1 in
                 DispatchQueue.main.async {
@@ -100,6 +105,7 @@ extension AddNewCityInfoViewController: UITableViewDataSource, UITableViewDelega
 
 // MARK: - NewCityInfoViewModelProtocal Methods
 extension AddNewCityInfoViewController: NewCityInfoViewModelProtocal {
+    
     func didUpdateCityInfo() {
         cityListTableView.reloadData()
     }
@@ -107,6 +113,7 @@ extension AddNewCityInfoViewController: NewCityInfoViewModelProtocal {
 
 //MARK: - UISearchBar Delegate
 extension AddNewCityInfoViewController: UISearchBarDelegate {
+    
     func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
         return true
     }

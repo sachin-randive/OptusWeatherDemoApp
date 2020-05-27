@@ -17,6 +17,7 @@ class WeatherInfoListViewController: UIViewController {
     var activityView: UIActivityIndicatorView?
     var apiCallTimer: Timer?
     let gradientLayer = CAGradientLayer()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         weatherInfoViewModel.delegate = self
@@ -24,10 +25,12 @@ class WeatherInfoListViewController: UIViewController {
         apiCallTimer = Timer.scheduledTimer(timeInterval: 300, target: self, selector: #selector(getCityInfoList), userInfo: nil, repeats: true)
         self.setGradientBackground(gradientLayer:gradientLayer)
     }
+    
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         gradientLayer.frame = view.layer.bounds
     }
+    
     @objc func getCityInfoList() {
         addActivityIndicator()
         activityView?.startAnimating()
@@ -35,6 +38,7 @@ class WeatherInfoListViewController: UIViewController {
         addNewCityBtn.accessibilityIdentifier = OWConstants.addNewCityBtn
         self.weatherInfoViewModel.getWeatherInfoList()
     }
+    
     // This method is to setup Activity indicator
     func addActivityIndicator() {
         activityView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.whiteLarge)
@@ -42,6 +46,7 @@ class WeatherInfoListViewController: UIViewController {
         activityView?.hidesWhenStopped = true
         view.addSubview(activityView!)
     }
+    
     //MARK:- AddNewCityAction
     @IBAction func AddNewCityAction(_ sender: Any) {
         let navToAddNewCityInfoViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddNewCityInfoViewController") as! AddNewCityInfoViewController
@@ -52,12 +57,13 @@ class WeatherInfoListViewController: UIViewController {
 
 // MARK: - Delegate and DataSource Methods
 extension WeatherInfoListViewController: UITableViewDataSource, UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell  = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.cityWeatherTableViewCell) as! WeatherInfoTableCell
         cell.accessibilityIdentifier = "myCell_\(indexPath.row)"
         let WeatherInfo = weatherInfoViewModel.weatherInfoList[indexPath.row]
         cell.cityNameLabel?.text = WeatherInfo.name
-        cell.cityTemperatureLabel?.text = "\(String(describing: WeatherInfo.main.temp)) °C"
+        cell.cityTemperatureLabel?.text = "\(String(describing: Int(WeatherInfo.main.temp))) °C"
         cell.selectionStyle = .none
         return cell
     }
@@ -69,6 +75,7 @@ extension WeatherInfoListViewController: UITableViewDataSource, UITableViewDeleg
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let navToDetailWeatherInfoViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailWeatherInfoViewController") as! DetailWeatherInfoViewController
         navToDetailWeatherInfoViewController.selectedWeatherInfoID = weatherInfoViewModel.weatherInfoList[indexPath.row].id
@@ -78,6 +85,7 @@ extension WeatherInfoListViewController: UITableViewDataSource, UITableViewDeleg
 
 // MARK: - Delegate Methods of WeatherInfoViewModelProtocal
 extension WeatherInfoListViewController: WeatherInfoViewModelProtocal {
+    
     func didUpdateWeatherInfo() {
         activityView?.stopAnimating()
         cityWeatherTableView.reloadData()
@@ -92,6 +100,7 @@ extension WeatherInfoListViewController: WeatherInfoViewModelProtocal {
 }
 // MARK: - AddNewEmployeeViewControllerProtocal Delegate - refresh after new employee record added
 extension WeatherInfoListViewController: AddNewCityInfoViewControllerProtocal {
+    
     func didGoBackAndReloadTableData() {
         self.weatherInfoViewModel.getWeatherInfoList()
     }

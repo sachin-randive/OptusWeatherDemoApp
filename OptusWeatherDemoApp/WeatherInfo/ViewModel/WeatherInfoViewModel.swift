@@ -39,6 +39,7 @@ class WeatherInfoViewModel: NSObject {
             DatabaseManager.sharedInstance.addCityInfoData(object: thirdCityInfoModel)
         }
     }
+    
     //MARK: - getEmployeeList Methods
     func getWeatherInfoList() {
         CheckDBFilesExist()

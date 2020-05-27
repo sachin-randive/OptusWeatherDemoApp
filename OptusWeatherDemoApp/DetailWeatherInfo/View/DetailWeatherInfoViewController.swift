@@ -21,12 +21,14 @@ class DetailWeatherInfoViewController: UIViewController {
     var activityView: UIActivityIndicatorView?
     let gradientLayer = CAGradientLayer()
     var selectedWeatherInfoID: Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         detailInfoViewModel.detailsDelegate = self
         getCityInfoList()
         self.setGradientBackground(gradientLayer: gradientLayer)
     }
+    
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         gradientLayer.frame = view.layer.bounds
@@ -37,6 +39,7 @@ class DetailWeatherInfoViewController: UIViewController {
         activityView?.startAnimating()
         detailInfoViewModel.getWeatherInfoList(cityID: String(describing: selectedWeatherInfoID!))
     }
+    
     // This method is to setup Activity indicator
     func addActivityIndicator() {
         activityView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.whiteLarge)
@@ -44,6 +47,7 @@ class DetailWeatherInfoViewController: UIViewController {
         activityView?.hidesWhenStopped = true
         view.addSubview(activityView!)
     }
+    
     //MARK: getWeatherDetailInfo
     private func getWeatherDetailInfo(row : Int)-> (detailText:String,nameOfImage:String) {
         var dataText = ""
@@ -53,13 +57,15 @@ class DetailWeatherInfoViewController: UIViewController {
             dataText = "\((detailInfoViewModel.weatherDeatilsInfoList?.main.humidity)!)%" 
             imageName = "humidity"
         case 1:
-            dataText = "\((detailInfoViewModel.weatherDeatilsInfoList?.main.tempMax)!)°%"
+            dataText = "\(Int((detailInfoViewModel.weatherDeatilsInfoList?.main.tempMax)!)) °C"
             imageName = "temp_max"
         case 2:
-            dataText = "\((detailInfoViewModel.weatherDeatilsInfoList?.main.tempMin)!)°%"
+            dataText = "\(Int((detailInfoViewModel.weatherDeatilsInfoList?.main.tempMin)!)) °C"
             imageName = "temp_min"
         case 3:
-            dataText = "\((detailInfoViewModel.weatherDeatilsInfoList?.wind?.speed)!)m/s"
+            var windSpeed = Double((detailInfoViewModel.weatherDeatilsInfoList?.wind?.speed) ?? 00)
+            windSpeed = windSpeed.roundToDecimal(1)
+            dataText = "\(windSpeed) m/s"
             imageName = "windspeed"
         case 4:
             let date = NSDate(timeIntervalSince1970: TimeInterval((detailInfoViewModel.weatherDeatilsInfoList?.sys.sunrise)!))
@@ -73,10 +79,11 @@ class DetailWeatherInfoViewController: UIViewController {
             dataText = "\((detailInfoViewModel.weatherDeatilsInfoList?.main.pressure)!) mb"
             imageName = "pressure"
         case 7:
-            let value =  Double((detailInfoViewModel.weatherDeatilsInfoList?.visibility) ?? 00) / 1000
+            var value =  Double((detailInfoViewModel.weatherDeatilsInfoList?.visibility) ?? 00) / 1000
             if value == 0.0 {
                 dataText = "NA"
             } else {
+                value = value.roundToDecimal(1)
                 dataText = "\(value) Km"
             }
             imageName = "visibility"
@@ -87,6 +94,7 @@ class DetailWeatherInfoViewController: UIViewController {
         
         return (dataText,imageName)
     }
+    
     //MARK:- Animation
     private func performCellAnimation(cell:DetailWeatherInfoCell) {
         UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 5, options: [],
@@ -100,6 +108,7 @@ class DetailWeatherInfoViewController: UIViewController {
         }
         )
     }
+    
     // get date from string
     private func getTimeStringFromDate(date : Date) -> String {
         let dateFormatter = DateFormatter()
@@ -112,6 +121,7 @@ class DetailWeatherInfoViewController: UIViewController {
 
 // MARK: - Delegate and DataSource Methods
 extension DetailWeatherInfoViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 8
     }
@@ -131,15 +141,16 @@ extension DetailWeatherInfoViewController: UICollectionViewDataSource, UICollect
 
 // MARK: - DetailInfoViewModelProtocal Methods
 extension DetailWeatherInfoViewController: DetailInfoViewModelProtocal {
+    
     func didUpdateDetailsWeatherInfo() {
         activityView?.stopAnimating()
         detailInfoTableView.reloadData()
         print(detailInfoViewModel.weatherDeatilsInfoList as Any)
         weatherImage.image =  UIImage(named: String(describing:((detailInfoViewModel.weatherDeatilsInfoList?.weather[0].main)!))) ?? UIImage(named: "deafult_One")
         weatherDescription.text = String(describing: (detailInfoViewModel.weatherDeatilsInfoList?.weather[0].weatherDescription)!)
-        cityNameLbl.text = detailInfoViewModel.weatherDeatilsInfoList?.name
-        currentTempLbl.text = "\(String(describing: (detailInfoViewModel.weatherDeatilsInfoList?.main.temp)!)) °C"
-        feelLikesLbl.text = "FeelsLike: \(String(describing:(detailInfoViewModel.weatherDeatilsInfoList?.main.feelsLike)!)) °C"
+        cityNameLbl.text = detailInfoViewModel.weatherDeatilsInfoList!.name + " (\(detailInfoViewModel.weatherDeatilsInfoList?.sys.country ?? ""))"
+        currentTempLbl.text = "\(String(describing: Int((detailInfoViewModel.weatherDeatilsInfoList?.main.temp)!))) °C"
+        feelLikesLbl.text = "FeelsLike: \(String(describing:Int((detailInfoViewModel.weatherDeatilsInfoList?.main.feelsLike)!))) °C"
     }
     
     func didErrorDetailsDisplay() {

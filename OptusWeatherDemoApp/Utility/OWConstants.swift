@@ -14,9 +14,10 @@ enum CellIdentifiers {
     static let cityListTableCell = "cityListTableCell"
     static let DetailWeatherInfoCell = "DetailWeatherInfoCell"
 }
+
 struct OWConstants {
     static let UNIT = "metric"
-    static let MelbourneID = "4163971"
+    static let MelbourneID = "2158177"
     static let Melbourne = "Melbourne"
     static let SydneyID = "2147714"
     static let Sydney = "Sydney"
