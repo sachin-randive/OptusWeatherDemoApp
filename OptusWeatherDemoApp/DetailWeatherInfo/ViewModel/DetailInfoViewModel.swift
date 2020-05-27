@@ -7,6 +7,7 @@
 //
 
 import Foundation
+
 protocol DetailInfoViewModelProtocal {
     func didUpdateDetailsWeatherInfo()
     func didErrorDetailsDisplay()
@@ -19,6 +20,7 @@ class DetailInfoViewModel: NSObject {
     //MARK: - getEmployeeList Methods
     func getWeatherInfoList(cityID: String) {
         let urlString = OWAppConfig.BaseURL + OWAppConfig.weather +  "id=\(cityID)&units=\(OWConstants.UNIT)&APPID=\(OWAppConfig.API_KEY)"
+        
         ServiceManager.shared.getWeatherInfo(urlString: urlString, completionHandler: { (result: Result<DetailInfoModel?, NetworkError>) in
             switch result {
             case .success(let response):

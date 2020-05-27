@@ -11,6 +11,7 @@ import UIKit
 class AddNewCityTableCell: UITableViewCell {
     //MARK: - Outlets
     @IBOutlet weak var lblCityName: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

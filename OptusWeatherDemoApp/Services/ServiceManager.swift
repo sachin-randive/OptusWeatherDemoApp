@@ -7,8 +7,10 @@
 //
 
 import Foundation
+
 struct ServiceManager {
     static let shared = ServiceManager()
+    
     // Generic function - 'T' stands for Type parameter
     func getWeatherInfo<T: Decodable> (urlString:String, completionHandler: @escaping(Result<T,NetworkError>) -> ()) {
         guard let serviceURL = URL(string: urlString) else {
@@ -33,6 +35,7 @@ struct ServiceManager {
         }.resume()
     }
 }
+
 enum NetworkError: Error {
     case badError
 }

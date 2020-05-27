@@ -12,6 +12,7 @@ import RealmSwift
 protocol AddNewCityInfoViewControllerProtocal {
     func didGoBackAndReloadTableData()
 }
+
 class AddNewCityInfoViewController: UIViewController {
     ////MARK: - Outlets
     @IBOutlet weak var cityListTableView: UITableView!
@@ -62,6 +63,7 @@ class AddNewCityInfoViewController: UIViewController {
         view.addSubview(activityView!)
     }
 }
+
 // MARK: - Delegate and DataSource Methods
 extension AddNewCityInfoViewController: UITableViewDataSource, UITableViewDelegate {
     

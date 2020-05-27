@@ -96,6 +96,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Weather Report" id="jhO-st-MFR">
+                        <barButtonItem key="backBarButtonItem" title=" " id="FaM-3W-Mwy"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="D35-1S-h1O">
                             <connections>
                                 <action selector="AddNewCityAction:" destination="BYZ-38-t0r" id="ZPw-lH-zay"/>
@@ -207,7 +208,7 @@
             </objects>
             <point key="canvasLocation" x="1388" y="129"/>
         </scene>
-        <!--Detail Weather Info View Controller-->
+        <!--City Details-->
         <scene sceneID="bZi-9F-GlM">
             <objects>
                 <viewController storyboardIdentifier="DetailWeatherInfoViewController" id="NVx-1v-exD" customClass="DetailWeatherInfoViewController" customModule="OptusWeatherDemoApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -382,6 +383,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VUC-Yx-ZM2"/>
                     </view>
+                    <navigationItem key="navigationItem" title="City Details" id="Qlh-nl-aSJ">
+                        <barButtonItem key="backBarButtonItem" title=" " id="HrM-Jh-U8b"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="cityNameLbl" destination="KOD-Cy-3NI" id="aRV-FQ-qcg"/>
                         <outlet property="currentTempLbl" destination="GTk-Jw-fMy" id="RVC-u2-DFy"/>

@@ -98,6 +98,7 @@ extension WeatherInfoListViewController: WeatherInfoViewModelProtocal {
         }
     }
 }
+
 // MARK: - AddNewEmployeeViewControllerProtocal Delegate - refresh after new employee record added
 extension WeatherInfoListViewController: AddNewCityInfoViewControllerProtocal {
     

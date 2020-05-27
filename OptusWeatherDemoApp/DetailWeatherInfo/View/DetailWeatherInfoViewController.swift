@@ -52,6 +52,7 @@ class DetailWeatherInfoViewController: UIViewController {
     private func getWeatherDetailInfo(row : Int)-> (detailText:String,nameOfImage:String) {
         var dataText = ""
         var imageName = ""
+        let localTimezone = detailInfoViewModel.weatherDeatilsInfoList?.timezone
         switch row {
         case 0:
             dataText = "\((detailInfoViewModel.weatherDeatilsInfoList?.main.humidity)!)%" 
@@ -69,11 +70,11 @@ class DetailWeatherInfoViewController: UIViewController {
             imageName = "windspeed"
         case 4:
             let date = NSDate(timeIntervalSince1970: TimeInterval((detailInfoViewModel.weatherDeatilsInfoList?.sys.sunrise)!))
-            dataText = getTimeStringFromDate(date: date as Date)
+            dataText = getTimeStringFromDate(date: date as Date, timezone: localTimezone!)
             imageName = "sunrise"
         case 5:
             let date = NSDate(timeIntervalSince1970: TimeInterval((detailInfoViewModel.weatherDeatilsInfoList?.sys.sunset)!))
-            dataText = getTimeStringFromDate(date: date as Date)
+            dataText = getTimeStringFromDate(date: date as Date, timezone: localTimezone!)
             imageName = "sunset"
         case 6:
             dataText = "\((detailInfoViewModel.weatherDeatilsInfoList?.main.pressure)!) mb"
@@ -110,10 +111,10 @@ class DetailWeatherInfoViewController: UIViewController {
     }
     
     // get date from string
-    private func getTimeStringFromDate(date : Date) -> String {
+    private func getTimeStringFromDate(date : Date, timezone:Int) -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .none
-        dateFormatter.timeStyle = .short
+        dateFormatter.dateFormat = "hh:mm a"
+        dateFormatter.timeZone = TimeZone(secondsFromGMT:timezone)
         let dataString = dateFormatter.string(from: date)
         return dataString
     }
@@ -148,7 +149,7 @@ extension DetailWeatherInfoViewController: DetailInfoViewModelProtocal {
         print(detailInfoViewModel.weatherDeatilsInfoList as Any)
         weatherImage.image =  UIImage(named: String(describing:((detailInfoViewModel.weatherDeatilsInfoList?.weather[0].main)!))) ?? UIImage(named: "deafult_One")
         weatherDescription.text = String(describing: (detailInfoViewModel.weatherDeatilsInfoList?.weather[0].weatherDescription)!)
-        cityNameLbl.text = detailInfoViewModel.weatherDeatilsInfoList!.name + " (\(detailInfoViewModel.weatherDeatilsInfoList?.sys.country ?? ""))"
+        cityNameLbl.text = detailInfoViewModel.weatherDeatilsInfoList!.name
         currentTempLbl.text = "\(String(describing: Int((detailInfoViewModel.weatherDeatilsInfoList?.main.temp)!))) °C"
         feelLikesLbl.text = "FeelsLike: \(String(describing:Int((detailInfoViewModel.weatherDeatilsInfoList?.main.feelsLike)!))) °C"
     }
