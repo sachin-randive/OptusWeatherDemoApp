@@ -85,12 +85,16 @@ extension AddNewCityInfoViewController: UITableViewDataSource, UITableViewDelega
         let firstCityInfoModel = NewCityInfoModel()
         firstCityInfoModel.id = "\(citiesName.id)"
         firstCityInfoModel.name = citiesName.name
-        DatabaseManager.sharedInstance.addCityInfoData(object: firstCityInfoModel)
-        self.popupAlert(title: OWConstants.success, message:OWConstants.sucessMessage, actionTitles: ["OK"], actions:[{action1 in
-            DispatchQueue.main.async {
-                self.addCityDelegate?.didGoBackAndReloadTableData()
-                self.navigationController?.popViewController(animated: true)
-            } }, nil])
+        if DatabaseManager.sharedInstance.searchNameIfExistInDatabase(name: citiesName.name) == nil {
+            DatabaseManager.sharedInstance.addCityInfoData(object: firstCityInfoModel)
+            self.popupAlert(title: OWConstants.success, message:OWConstants.sucessMessage, actionTitles: ["OK"], actions:[{action1 in
+                DispatchQueue.main.async {
+                    self.addCityDelegate?.didGoBackAndReloadTableData()
+                    self.navigationController?.popViewController(animated: true)
+                } }, nil])
+        } else {
+            self.alert(message:OWConstants.alreadyExist, title: "")
+        }
     }
 }
 

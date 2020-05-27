@@ -28,4 +28,13 @@ class DatabaseManager {
             database.add(object)
         }
     }
+    func searchNameIfExistInDatabase(name: String) -> NewCityInfoModel? {
+        let predicate = NSPredicate(format: "name = %@", name )
+        let nameObject = database.objects(NewCityInfoModel.self).filter(predicate).first
+        
+        if nameObject?.name == name {
+            return nameObject
+        }
+        return nil
+    }
 }

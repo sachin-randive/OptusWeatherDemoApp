@@ -23,6 +23,7 @@ struct OWConstants {
     static let BrisbaneID = "2174003"
     static let Brisbane = "Brisbane"
     static let sucessMessage = "City Added Successfully!!!"
+    static let alreadyExist = "City alreay exist in  database"
     static let success = "Success"
     static let Error = "Error"
     static let errorMessage = "Fail to load data from server. Please try after sometime."
