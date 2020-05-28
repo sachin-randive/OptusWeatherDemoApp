@@ -12,6 +12,7 @@ class WeatherInfoListViewController: UIViewController {
     //MARK: - Outlets
     @IBOutlet weak var cityWeatherTableView: UITableView!
     @IBOutlet weak var addNewCityBtn: UIBarButtonItem!
+    
     // Declare WeatherInfoViewModel
     fileprivate var weatherInfoViewModel = WeatherInfoViewModel()
     var activityView: UIActivityIndicatorView?

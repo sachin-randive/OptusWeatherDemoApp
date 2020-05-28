@@ -13,6 +13,7 @@ class OptusWeatherDemoAppUITests: XCTestCase {
     override func setUp() {
         continueAfterFailure = false
         app = XCUIApplication()
+        app.launch()
     }
     
     override func tearDown() {
@@ -20,7 +21,6 @@ class OptusWeatherDemoAppUITests: XCTestCase {
     }
     
     func testForCellExistence() {
-        app.launch()
         let detailstable = app.tables.matching(identifier: "table--cityWeatherTableView")
         let firstCell = detailstable.cells.element(matching: .cell, identifier: "myCell_0")
         let existencePredicate = NSPredicate(format: "exists == 1")
@@ -31,7 +31,6 @@ class OptusWeatherDemoAppUITests: XCTestCase {
     }
     
     func testTableInteraction() {
-        app.launch()
         // Assert that we are displaying the tableview
         let mainTableView = app.tables["table--cityWeatherTableView"]
         XCTAssertTrue(mainTableView.exists, "The main tableview exists")
@@ -52,4 +51,21 @@ class OptusWeatherDemoAppUITests: XCTestCase {
             XCTAssert(false, "Was not able to find any table cells")
         }
     }
+    
+    //MARK :- add New city  UI testing Start here.
+    /* #################################################################################
+    //MARK:- NOTE : For UI tesing, Please change the citylist.json files to citySeachUITesting.json in NewCityInfoViewModel.getCityList() function
+       ################################################################################# */
+    
+    func test_AddNewRecordPage_SearchCity() {
+        let app = XCUIApplication()
+        app.navigationBars["Weather Report"].buttons["addNewCityBtn"].tap()
+        let enterCityNameSearchField = app/*@START_MENU_TOKEN@*/.searchFields["Enter City Name"]/*[[".otherElements[\"AddNewCity_Dashboard\"].searchFields[\"Enter City Name\"]",".searchFields[\"Enter City Name\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        enterCityNameSearchField.tap()
+        enterCityNameSearchField.typeText("Kashm")
+        app.tables.staticTexts["Kashmar"].tap()
+        app.alerts["Success"].scrollViews.otherElements.buttons["OK"].tap()
+    }
 }
+
+

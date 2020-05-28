@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03033B15247F8C7500C5B25F /* citySeachUITesting.json in Resources */ = {isa = PBXBuildFile; fileRef = 03033B14247F8C7500C5B25F /* citySeachUITesting.json */; };
 		03077DF9247E6D9900C13A3A /* CitySerachTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03077DF8247E6D9900C13A3A /* CitySerachTests.swift */; };
 		03086CD72479228700F55C62 /* WeatherInfoTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03086CD62479228700F55C62 /* WeatherInfoTableCell.swift */; };
 		03086CD92479339E00F55C62 /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03086CD82479339E00F55C62 /* ServiceManager.swift */; };
@@ -57,6 +58,7 @@
 
 /* Begin PBXFileReference section */
 		02F60678E8BC1757FC792538 /* Pods-OptusWeatherDemoApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OptusWeatherDemoApp.release.xcconfig"; path = "Target Support Files/Pods-OptusWeatherDemoApp/Pods-OptusWeatherDemoApp.release.xcconfig"; sourceTree = "<group>"; };
+		03033B14247F8C7500C5B25F /* citySeachUITesting.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = citySeachUITesting.json; sourceTree = "<group>"; };
 		03077DF0247E6D5900C13A3A /* CitySerachTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitySerachTests.swift; sourceTree = "<group>"; };
 		03077DF2247E6D5900C13A3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		03077DF8247E6D9900C13A3A /* CitySerachTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitySerachTests.swift; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				03578991247AA0AF00040E31 /* citylist.json */,
+				03033B14247F8C7500C5B25F /* citySeachUITesting.json */,
 			);
 			path = LocalJson;
 			sourceTree = "<group>";
@@ -489,6 +492,7 @@
 			files = (
 				03C271B02477E5C4003034F2 /* LaunchScreen.storyboard in Resources */,
 				03C271AD2477E5C4003034F2 /* Assets.xcassets in Resources */,
+				03033B15247F8C7500C5B25F /* citySeachUITesting.json in Resources */,
 				03578992247AA0AF00040E31 /* citylist.json in Resources */,
 				03C271AB2477E5C3003034F2 /* Main.storyboard in Resources */,
 			);

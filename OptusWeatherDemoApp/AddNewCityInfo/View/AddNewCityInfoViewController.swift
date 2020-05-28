@@ -14,9 +14,10 @@ protocol AddNewCityInfoViewControllerProtocal {
 }
 
 class AddNewCityInfoViewController: UIViewController {
-    ////MARK: - Outlets
+    //MARK: - Outlets
     @IBOutlet weak var cityListTableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
+    
     // Declare WeatherInfoViewModel
     fileprivate var newCityInfoViewModel = NewCityInfoViewModel()
     let gradientLayer = CAGradientLayer()
@@ -26,7 +27,6 @@ class AddNewCityInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         newCityInfoViewModel.delegate = self
-        view.accessibilityIdentifier = OWConstants.AddNewCity_Dashboard
         self.setGradientBackground(gradientLayer: gradientLayer)
         let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
         textFieldInsideSearchBar?.backgroundColor = UIColor.black
@@ -38,10 +38,7 @@ class AddNewCityInfoViewController: UIViewController {
         activityView?.startAnimating()
         searchBar.text = ""
         dismissKeyboard()
-        searchBar.accessibilityIdentifier = OWConstants.searchBarIndentifier
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2), execute: {
-            self.newCityInfoViewModel.getCityList()
-        })
+        self.newCityInfoViewModel.getCityList()
     }
     
     override func viewWillLayoutSubviews() {

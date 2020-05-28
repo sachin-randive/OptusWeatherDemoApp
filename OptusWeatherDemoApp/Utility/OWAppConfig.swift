@@ -9,7 +9,6 @@
 import Foundation
 
 struct OWAppConfig {
-    //http://api.openweathermap.org/data/2.5/weather?id=4163971&units=metri c&APPID=your_registered_API_key
     static let BaseURL = "http://api.openweathermap.org/data/2.5/"
     static let group = "group?"
     static let weather = "weather?"
